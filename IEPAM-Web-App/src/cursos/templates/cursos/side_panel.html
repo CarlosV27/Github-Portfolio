@@ -1,0 +1,102 @@
+<div class="grid-container">
+
+    <div>
+        <div class="panel-subtitle">Información sobre</div>
+        <div class="panel-title">{{ course.name }}</div>
+
+        <div class="panel-info-container">
+            <a class="panel-info" href="{% url 'cursos:course_like' id=course.pk %}">
+                <div class="panel-info-text">
+                    {% if liked %}
+                        <span class="material-icons like liked">thumb_up</span>
+                    {% else %}
+                        <span class="material-icons like">thumb_up</span>
+                    {% endif %}
+                    <p class="course-info-num">{{ course.likes.count }}</p>
+                </div>
+                <br>
+                <p>Me gusta</p>
+            </a>
+
+            <a class="panel-info"  href="{% url 'cursos:adcourse_members' id=course.pk %}">
+                <div class="panel-info-text">
+                    <span class="material-icons">people</span>
+                    <p class="course-info-num">{{ course.members.count }}</p>
+                </div>
+                <br>
+                <p>Miembros</p>
+            </a>
+
+            <a class="panel-info">
+                <div class="panel-info-text">
+                    <span class="material-icons">people</span>
+                    <p class="course-info-num">{{ course.members.count }}</p>
+                </div>
+                <br>
+                <p>Han cursado</p>
+            </a>
+        </div>
+
+        <br>
+
+        <div class="panel-subtitle">Descripción</div>
+        <div class="panel-description">
+            {{ course.description }}
+        </div>
+
+        {% if is_member %}
+            <div class="panel-subtitle">Mi progreso <span class="material-icons">east</span> {{ completion_percentage }}%</div>
+            <div class="progress-bar">
+                <div class="progress-bar-bar">
+                    <div id="bar" class="progress-bar-fill">
+                    </div>
+                </div>
+            </div>
+            <script>
+                const ratio = '{{completion_ratio}}';
+                document.getElementById('bar').style.transform = 'scaleX('+ ratio +')'
+            </script>
+            <div class="panel-subtitle">¡Haz completado {{ completed_items }} de {{ total_items }} actividades!</div>
+        {% endif %}
+    </div>
+
+    <div class="owner-buttons">
+        {% if is_member %}
+    
+        {% elif is_owner %}
+    
+        {% else %}
+    
+        <a href="{% url 'cursos:adcourse_adding_member' id=course.pk user_id=user.pk %}" class="button-green no-style-a">
+            <div></div>
+            <p>Unirse capacitación</p>
+            <span class="material-symbols-outlined">
+                person_add
+            </span>
+            <div></div>
+        </a>
+    
+        {% endif %}
+    
+    
+        {% if is_owner %}
+            <a href="{% url 'cursos:adcourse_edit' id=course.pk %}" class="button-edit-2 no-style-a">
+                <p>Editar capacitación</p>
+                <span class="material-icons">edit</span>
+            </a>
+            <a href="{% url 'cursos:adcourse_delete' id=course.pk %}" class="button-delete no-style-a">
+                <p>Eliminar</p>
+                <span class="material-icons">delete</span>
+            </a>
+
+        {% elif is_member %}
+            <a href="{% url 'cursos:course_quit' id=course.pk %}" class="button-gray no-style-a">
+                <div></div>
+               <p>Desinscribirme</p>
+               <span class="material-icons">logout</span>
+                <div></div>
+            </a>
+        {% endif %}
+    </div>
+
+</div>

@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% load static %}
+<title>Inicio</title>
+
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+<div id="id-app" style="display: none;">main</div>
+
+<div class="container-window">
+    <div class="index-main-container">
+
+        <div class="index-header">
+            <div class="index-title">Bienvenido de vuelta, {{ user.first_name }}.
+                <div class="index-subtitle">¡Vas bien, sigue así!</div>
+            </div>
+            <div class="index-date">
+                {% if date.weekday == 0 %}
+                Lunes,
+                {% elif date.weekday == 1 %}
+                Martes,
+                {% elif date.weekday == 2 %}
+                Miercoles,
+                {% elif date.weekday == 3 %}
+                Jueves,
+                {% elif date.weekday == 4 %}
+                Viernes,
+                {% elif date.weekday == 5 %}
+                Sabado,
+                {% elif date.weekday == 6 %}
+                Domingo,
+                {% endif %} 
+                {{ date.day }} de 
+                {% if date.month == 1 %}
+                Enero
+                {% elif date.month == 2 %}
+                Febrero
+                {% elif date.month == 3 %}
+                Marzo
+                {% elif date.month == 4 %}
+                Abril
+                {% elif date.month == 5 %}
+                Mayo
+                {% elif date.month == 6 %}
+                Junio
+                {% elif date.month == 7 %}
+                Julio
+                {% elif date.month == 8 %}
+                Agosto
+                {% elif date.month == 9 %}
+                Septiembre
+                {% elif date.month == 10 %}
+                Octubre
+                {% elif date.month == 11 %}
+                Noviembre
+                {% elif date.month == 12 %}
+                Diciembre
+                {% endif %}
+                {{ date.year }}
+            </div>
+        </div>
+
+        <div class="index-secondary-container">
+            
+            <div>
+                <!-- Estadisiticas -->
+                <div class="index-section-container">
+
+                    <div class="index-section-title">Estadísticas</div>
+                    <div class="index-section-body">
+                        <div class="statistics-card">
+                            <div class="statistics-card-number">{{ cap_actuales }}</div>
+                            <div class="statistics-card-text">Capacitaciones en curso</div>
+                        </div>
+                        <div class="statistics-card">
+                            <div class="statistics-card-number">{{ cap_cursadas }}</div>
+                            <div class="statistics-card-text">Capacitaciones completadas</div>
+                        </div>
+                        <div class="statistics-card">
+                            <div class="statistics-card-number">{{ act_completadas }}</div>
+                            <div class="statistics-card-text">Actividades realizadas</div>
+                        </div>
+                        <div class="statistics-card">
+                            <div class="statistics-card-number">{{ cap_creadas }}</div>
+                            <div class="statistics-card-text">Capacitaciones creadas</div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Estadisiticas end -->
+                <br>
+                <!-- Progreso -->
+                <div class="index-section-container">
+
+                    <div class="index-section-title">Tu progreso</div>
+                    <div class="index-section-body">
+                        <div class="progress-container">
+
+                            {% for course in courses_percentages %}
+
+                                <div class="progress-item">
+                                    <div class="progress-name">
+                                        {{ course.0 }}
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-bar-bar">
+                                            <div id="bar{{forloop.counter}}" class="progress-bar-fill"></div>
+                                        </div>
+                                        <p>{{ course.1 }}%</p>
+                                    </div>
+                                </div>
+
+                                {% if not forloop.last %}
+                                    <div class="progress-separator"></div>
+                                {% endif %}
+
+                                <script>
+                                    document.getElementById('bar{{forloop.counter}}').style.transform = 'scaleX(0)'
+                                    document.getElementById('bar{{forloop.counter}}').style.transform = 'scaleX({{course.2}})'
+                                </script>
+                            {% empty %}
+                                <div class="progress-item">
+                                    <div class="progress-name">
+                                        No estás cursando ninguna capacitación
+                                    </div>
+                                    <div class="progress-bar">
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Progreso end -->
+                <br>
+                <!-- Continuar Cursos -->
+                <div class="index-section-container">
+
+                    <div class="index-section-title">Continúa capacitandote</div>
+                    <div class="index-section-body">
+                        <div class="continue-container">
+
+                            {% for curso in continue_cursos %}
+                                <a class="no-style-a" href="{% url 'cursos:course_detail' id=curso.0.pk %}">
+                                    <div class="continue-curso">
+                                        <div class="continue-curso-img">
+                                            {% if curso.0.bg_image %}
+                                                <img src="{{ curso.0.bg_image.url }}">
+                                            {% else %}
+                                                <img src="{% static 'img/view.jpg' %}">
+                                            {% endif %}
+                                        </div>
+                                        <div class="continue-text">
+                                            <div class="continue-curso-title">
+                                                {{ curso.0.name }}
+                                            </div>
+                                            <div class="continue-curso-continuar">
+                                                <p>Continua</p>
+                                                <span class="material-icons">east</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            {% empty %}
+                            <a class="no-style-a" href="{% url 'cursos:menu' %}">
+                                <div class="continue-curso">
+                                    <div class="continue-curso-img">
+                                        <img src="{% static 'img/view.jpg' %}">
+                                    </div>
+                                    <div class="continue-text">
+                                        <div class="continue-curso-title">
+                                            No estás inscrito en ninguna capacitación
+                                        </div>
+                                        <div class="continue-curso-continuar">
+                                            <p>Capacitate</p>
+                                            <span class="material-icons">east</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Continuar Cursos end -->
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+{% endblock %}

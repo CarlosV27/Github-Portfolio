@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Material icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- Social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/side-panel.css' %}">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="icon" type="svg" href="{% static 'svg/iepam-logo-white.svg' %}">
+    {% block head %} {% endblock %}
+</head>
+<body>
+    <nav class="navbar-back">
+        <div class="navbar-container">
+            <a href="/" class="navbar-title"><img src="{% static 'svg/iepam-logo-white.svg' %}"><p>IEPAM</p></a>
+            <div class="navbar-items">
+                <ul>
+                    <il id="Inicio" class="list active">
+                        <a id="InicioA" href="{% url 'index' %}"><span class="material-icons">home</span><p>Inicio</p></a>
+                    </il>
+                    <il id="Capacitaciones" class="list">
+                        <a id="CapacitacionesA" href="{% url 'cursos:menu' %}"><span class="material-icons">class</span><p>Capacitaciones</p></a>
+                    </il>
+                    <il id="Perfil" class="list">
+                        <a id="PerfilA" href="{% url 'miembros:user_profile' %}"><span class="material-icons">account_circle</span><p>Perfil</p></a>
+                    </il>
+
+                    {% if perms.users.is_admin %}
+                    <il id="Admin" class="list">
+                        <a id="AdminA" href="{% url 'panel' %}"><span class="material-icons">admin_panel_settings</span><p>Admin Panel</p></a>
+                    </il>
+                    {% else %}
+                    <il id="Admin" class="list" style="visibility: hidden;">
+                        <a id="AdminA" href=""><span class="material-icons">admin_panel_settings</span><p>Admin Panel</p></a>
+                    </il>
+                    {% endif %}
+
+                    <div id="navbar-item-01" class="navbar-item-bg"></div>
+                    <div id="navbar-item-02" class="navbar-item-of"></div>
+
+
+                    <il id="Logout" class="nav-end">
+                        <a href="{% url 'users:logout' %}"><span class="material-icons">logout</span><p>Logout</p></a>
+                    </il>
+                </ul>
+            </div>
+            
+        </div>
+        
+    </nav>
+    <main>
+        <div class="container">
+            <!-- Block for main content of child templates -->
+            {% block body %} {% endblock %}
+        </div>
+
+        <script src="{% static 'js/nav.js' %}"></script>
+    </main>
+</body>
+</html>

@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% load static %}
+<title> {{ lecture.name }} </title>
+
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/activities.css' %}">
+
+<div id="id-app" style="display: none;">cap</div>
+
+<div class="container-window">
+
+    <div class="course-container">
+
+        <div>
+            <div class="activity-header">
+                <a href="{% url 'cursos:course_detail' id=lecture.modulo.curso.pk %}" class="no-style-a">
+                    <div class="return">
+                        <span class="material-icons">chevron_left</span>
+                        Volver a la capacitación
+                    </div>
+                </a>
+                
+                {% if is_owner %}
+                <a href="{% url 'cursos:course_edit_item' id=lecture.pk action=1 %}" class="button-edit no-style-a">
+                    <p>Editar</p>
+                    <span class="material-icons">edit</span>
+                </a>
+                <a href="{% url 'cursos:course_lecture_delete' id=lecture.pk %}" class="button-delete no-style-a">
+                    <p>Eliminar</p>
+                    <span class="material-icons">delete</span>
+                </a>
+                {% endif %}
+            </div>
+
+            <div class="description">{{ lecture.modulo.name }}</div>
+
+            <div class="title">{{ lecture.name }}</div>
+
+            <div class="description">Autor: {{ lecture.author }}</div>
+
+            <div class="lecture-container">
+                <div class="subtitle">Resumen</div>
+                {{ lecture.description }}
+
+                <div class="spaceing"></div>
+
+                <div class="subtitle">{{ lecture.name }}</div>
+
+                <p align="justify" style="margin-top: 0;">{{ lecture.content }}</p>
+
+                <br>
+
+                {% if is_member %}
+                <div style="text-align: center;">
+                    <a href="{% url 'cursos:course_read_lecture' id=lecture.pk %}" class="no-style-a button-view">
+                        {% if viewed %}
+                            <span class="material-icons">visibility_off</span>
+                            Marcar como no leído
+                        {% else %}
+                            <span class="material-icons">visibility</span>
+                            Marcar como leído
+                        {% endif %}
+                    </a>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+
+        <div>
+            <div class="side-panel">
+                {% include 'cursos/side_panel.html' %}
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

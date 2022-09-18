@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% load static %}
+<title>{{ activity.name }}</title>
+
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/activities.css' %}">
+
+<div id="id-app" style="display: none;">cap</div>
+
+<div class="container-window">
+
+    <div class="course-container">
+
+        <div>
+            <div class="activity-header">
+                <a href="{% url 'cursos:course_detail' id=activity.modulo.curso.pk %}" class="no-style-a">
+                    <div class="return">
+                        <span class="material-icons">chevron_left</span>
+                        Volver a la capacitación
+                    </div>
+                </a>
+                
+                {% if is_owner%}
+                    <a href="{% url 'cursos:course_edit_item' id=activity.pk action=2 %}" class="button-edit no-style-a">
+                        <p>Editar</p>
+                        <span class="material-icons">edit</span>
+                    </a>
+                    <a href="{% url 'cursos:course_activity_delete' id=activity.pk %}" class="button-delete no-style-a">
+                        <p>Eliminar</p>
+                        <span class="material-icons">delete</span>
+                    </a>
+                {% endif %}
+            </div>
+
+            <div class="description">{{ activity.modulo.name }}</div>
+
+            <div class="title">{{ activity.name }}</div>
+
+            <div class="lecture-container">
+                <div class="subtitle">Instrucciones para la actividad</div>
+                {{ activity.description }}
+
+                <div class="spaceing"></div>
+
+                <div class="subtitle">Especificaciones de entrega</div>
+                {{ activity.instructions }}
+            </div>
+            {% if not is_owner %}
+            <div class="upload-container">
+                    {% if submited %}
+                        <div class="subtitle">Actividad Entregada!</div>
+                        <a class="submit-button-a" href="{% url 'cursos:course_activity_entry' id=entry.pk %}">Ver Entrega</a>
+                    {% else %}
+                        <div class="subtitle">Entregar actividad</div>
+                            <form class="form-col-2" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ entrega_form.non_field_errors}}
+                                
+                                <div class="custom-file-input">
+                                    {{ entrega_form.file.errors }}
+                                    {{ entrega_form.file }}
+                                </div>
+                                
+                                <div style="text-align: end;">
+                                    <button class="submit-button" type="submit">Subir</button>
+                                </div>
+                            </form>
+                            <div class="small-subtitle">Recuerda que los tipos de archivo aceptados son: .pdf, .docx, .xlsx y .pptx.</div>
+                        </div>
+                    {% endif %}
+            </div>
+            {% endif %}
+        </div>
+
+        <div>
+            {% if is_owner %}
+            <div class="side-panel">
+                <div class="entrega-panel">
+                    <h1 style="margin-bottom: 0.5rem;">Entregas</h1>
+                    {% for entrega in activity.entregas.all %}
+                    <a href="{% url 'cursos:course_activity_entry' id=entrega.pk %}">
+                        <div class="entrega">
+                            <div class="entrega-user">{{ entrega.user }}</div>
+                            <div class="entrega-date">Entregada el {{ entrega.created_date }}</div>
+                        </div>
+                    </a>
+
+                            {% empty %}
+
+                            <h4>Sin entregas</h4>
+
+                    {% endfor %}
+                </div>
+            </div>
+            {% else %}
+            <div class="side-panel">
+                {% include 'cursos/side_panel.html' %}
+            </div>
+            {% endif %}
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

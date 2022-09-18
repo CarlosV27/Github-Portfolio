@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% load static %}
+<title>Quiz</title>
+
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/activities.css' %}">
+
+<div id="id-app" style="display: none;">cap</div>
+
+<div class="container-window">
+
+    <div class="activity-header">
+        <a href="{% url 'cursos:course_detail' id=quiz.modulo.curso.pk %}" class="no-style-a">
+            <div class="return">
+                <span class="material-icons">chevron_left</span>
+                Volver a la capacitación
+            </div>
+        </a>
+                
+        {% if is_owner %}
+            <a href="{% url 'cursos:course_edit_item' id=quiz.pk action=4 %}" class="button-edit no-style-a">
+                <p>Editar</p>
+                <span class="material-icons">edit</span>
+            </a>
+            <a href="{% url 'cursos:course_quiz_delete' id=quiz.pk %}" class="button-delete no-style-a">
+                <p>Eliminar</p>
+                <span class="material-icons">delete</span>
+            </a>
+        {% endif %}
+
+    </div>
+
+    <div class="description">{{ quiz.modulo.name }}</div>
+
+    <div class="title">{{ quiz.name }}</div>
+
+    <div class="description">{{ quiz.description }}</div>
+
+    <div class="quiz-admin-container">
+
+        <div class="quiz-admin-cell">
+            {% if is_owner %}
+
+                <div class="quiz-admin-cell-header">
+                    <div class="quiz-admin-cell-title">Preguntas</div>
+                    <a href="{% url 'cursos:course_quiz_add_question' id=quiz.pk %}" class="button-add tooltip">
+                        <span class="material-icons">add</span>
+                        <div class="tooltiptext">Agregar pregunta</div>
+                    </a>
+                </div>
+
+                {% for question in questions %}
+                    
+                    <div class="question">
+                        <div class="question-header">
+                            <div class="question-title">Pregunta {{ forloop.counter }}</div>
+                            <span class="material-icons">expand_more</span>
+                        </div>
+                        <div class="question-prompt">{{ question.prompt }}</div>
+                        <div class="question-options-title">Opciones</div>
+                        {% for option in question.options.all %}
+                            <div class="option">{{ forloop.counter }}) &nbsp; {{ option.prompt }}</div>
+                        {% endfor %}
+                        <a class="question-edit-button" href="{% url 'cursos:course_quiz_edit_question' id=question.pk %}">Editar</a>
+                    </div>
+                        
+                {% empty %}
+
+                    <h4>No se encontraron Preguntas</h4>
+
+                {% endfor %}
+                <script>
+                    var divs = document.getElementsByClassName('question');
+                    for (var i = 0, len = divs.length; i < len; i++){
+                        divs[i].setAttribute('tabindex', '0');
+                    }
+                </script>
+
+            {% endif %}
+        </div>
+
+        <div class="quiz-admin-cell">
+            {% if is_owner %}
+                <div class="quiz-admin-cell-header">
+                    <div class="quiz-admin-cell-title">Resultados</div>
+                </div>
+                
+                {% for result in results %}
+                <div class="result">
+                    <p>{{ result.user.get_full_name }}</p>
+                    <b>{{ result.grade }}</b>
+                </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+                
+    </div>
+</div>
+
+{% endblock %}

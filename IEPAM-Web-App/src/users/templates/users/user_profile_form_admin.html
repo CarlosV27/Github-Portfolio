@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% load static %}
+<title>Editar Perfil</title>
+
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/profile-edit.css' %}">
+
+<style>
+    .container-window {
+        display: flex;
+        margin: 0;
+        padding: 2rem;
+    }
+</style>
+
+<div id="id-app" style="display: none;">admin</div>
+
+<div class="container-window">
+
+    <div class="profile-rows">
+
+        <div class="profile-rows-cell">
+            <a href="{% url 'panel' %}" class="no-style-a" style="position:absolute;">
+                <div class="admin-return">
+                    <span class="material-icons">chevron_left</span>
+                    Volver al panel
+                </div>
+            </a>
+            <div class="profile-background"></div>
+            <div class="profile-picture">
+                <a href="{% url 'users:user_update_profilepic' id=extended_user.user.pk %}">
+                    <div class="profile-picture-placeholder">
+                        <span class="material-icons">photo_camera</span>
+                        <p>Cambiar foto</p>
+                    </div>
+                </a>
+            </div>
+            <div class="profile-name">
+                <p class="profile-main-name">{{ extended_user.get_full_name }}</p>
+                <p class="profile-secondary-name">
+                    {% if extended_user.canTeach %}
+                        Capacitador
+                    {% else %}
+                        Usuario
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+
+        <div class="profile-rows-cell">
+            <div class="user-cards-container">
+                <div class="user-info-container">    
+                    <p class="user-info-title">Información del usuario</p>
+                    <hr class="hr-nice">
+
+        
+                    {% if changing_group %}
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ group_form.non_fields_errors }}
+
+                        <label for="">Seleccionar Grupo</label>
+                        <div>
+                            {{ group_form.user_type.errors }}
+                            {{ group_form.user_type }}
+                        </div>
+                        
+                        <a href="{% url 'users:user_detail' id=extended_user.user.pk %}">Cancelar</a>
+                        <button type="submit">Cambiar</button>
+
+                    </form>
+                    
+                    {% else %}
+
+                    <form method="post">
+
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+        
+                        <div class="user-info-field-container">
+                            <label for="">Nombre</label>
+                            <div>
+                                {{ form.first_name.error }}
+                                {{ form.first_name }}
+                            </div>
+                        </div>
+        
+                        <div class="user-info-field-container">
+                            <label for="">Apellido Paterno</label>
+                            <div>
+                                {{ form.first_last_name.error }}
+                                {{ form.first_last_name }}
+                            </div>
+                        </div>
+        
+                        <div class="user-info-field-container">
+                            <label for="">Apellido Materno</label>
+                            <div>
+                                {{ form.second_last_name.error }}
+                                {{ form.second_last_name }}
+                            </div>
+                        </div>
+        
+                        <div class="user-info-group-container">
+                            <div class="user-info-field-container">
+                                <label for="">Dia</label>
+                                <div>
+                                    {{ form.day.error }}
+                                    {{ form.day }}
+                                </div>
+                            </div>
+                            
+                            <div class="user-info-field-container">
+                                <label for="">Mes</label>
+                                <div>
+                                    {{ form.month.error }}
+                                    {{ form.month }}
+                                </div>
+                            </div>
+                            
+                            <div class="user-info-field-container">
+                                <label for="">Año</label>
+                                <div>
+                                    {{ form.year.error }}
+                                    {{ form.year }}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="user-info-field-container">
+                            <label for="">Nivel Academico</label>
+                            <div>
+                                {{ form.academic_level.error }}
+                                {{ form.academic_level }}
+                            </div>
+                        </div>
+                        <div style="text-align: center;">
+                            <a style="text-decoration: underline;" href="{% url 'users:user_update_cv' id=extended_user.user.pk %}">Actualizar CV</a>
+                        </div>
+                        <button type="submit" class="user-edit-info">Guardar cambios</button>
+                    </form>
+                    <br>
+                </div>
+                {% endif %}
+        
+                <div class="user-current-courses-container">
+                    <p class="user-info-title">Capacitaciones actuales</p>
+                    <hr class="hr-nice">
+        
+                        {% include 'users/_user_courses_snippet.html' with courses=incomplete_courses %}
+        
+                    <br>
+                </div>
+        
+                <div class="user-current-courses-container">
+                    <p class="user-info-title">Capacitaciones Completadas</p>
+                    <hr class="hr-nice">
+        
+                   {% include 'users/_user_courses_snippet.html' with courses=completed_courses %}
+        
+                    <br>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

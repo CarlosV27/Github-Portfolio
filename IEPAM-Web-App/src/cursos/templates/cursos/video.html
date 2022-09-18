@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% load static %}
+<title>{{ video.name }}</title>
+
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/activities.css' %}">
+
+<div id="id-app" style="display: none;">cap</div>
+
+<div class="container-window">
+
+    <div class="course-container">
+
+        <div>
+            <div class="activity-header">
+                <a href="{% url 'cursos:course_detail' id=video.modulo.curso.pk %}" class="no-style-a">
+                    <div class="return">
+                        <span class="material-icons">chevron_left</span>
+                        Volver a la capacitación
+                    </div>
+                </a>
+                
+                {% if is_owner %}
+                <a href="{% url 'cursos:course_edit_item' id=video.pk action=3 %}" class="button-edit no-style-a">
+                    <p>Editar</p>
+                    <span class="material-icons">edit</span>
+                </a>
+                <a href="{% url 'cursos:course_video_delete' id=video.pk %}" class="button-delete no-style-a">
+                    <p>Eliminar</p>
+                    <span class="material-icons">delete</span>
+                </a>
+                {% endif %}
+            </div>
+
+            <div class="description">{{ video.modulo.name }}</div>
+
+            <div class="title">{{ video.name }}</div>
+            
+            <div class="lecture-container">
+                <div class="subtitle">Descripción</div>
+                {{ video.description }}
+                <br>
+                <div style="text-align: center;">
+                    <iframe class="video" 
+                            src="{{ video.url }}" 
+                            title="YouTube video player" 
+                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+
+                <br>
+
+                {% if is_member %}
+                <div style="text-align: center;">
+                    <a href="{% url 'cursos:course_watch_video' id=video.pk %}" class="no-style-a button-view">
+                        {% if viewed %}
+                            <span class="material-icons">visibility_off</span>
+                            Marcar como no visto
+                        {% else %}
+                            <span class="material-icons">visibility</span>
+                            Marcar como visto
+                        {% endif %}
+                    </a>
+                </div>
+                {% endif %}
+
+            </div>
+            
+        </div>
+
+        <div>
+            <div class="side-panel">
+                {% include 'cursos/side_panel.html' %}
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% load static %}
+<title>Mi Perfil</title>
+
+{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+<div id="id-app" style="display: none;">profile</div>
+
+<div class="container-window">
+    <div class="profile-rows">
+
+        <div class="profile-rows-cell">
+            <div class="profile-background"></div>
+            <div class="profile-picture">
+                {% if user.extended_user.profile_pic %}
+                    <img src="{{ user.extended_user.profile_pic.url }}">
+                {% else %}
+                    <img src="{% static 'img/view.jpg' %}">
+                {% endif %}
+            </div>
+            <div class="profile-name">
+                <p class="profile-main-name">{{ user.extended_user.get_full_name }}</p>
+                <p class="profile-secondary-name">
+                    {% if user.extended_user.is_admin %}
+                        Admin
+                    {% elif user.extended_user.can_teach %}
+                        Capacitador
+                    {% else %}
+                        Usuario
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+        <a href="{% url 'users:user_profile_update' %}" class="user-edit-info-secondary">Editar Perfil</a>
+        <div class="profile-rows-cell">
+            <div class="user-cards-container">
+                <div class="user-info-container">
+                    <p class="user-info-title">Información del usuario</p>
+                    <hr class="hr-nice">
+                    <div class="user-info-field-container">
+                        <p class="user-info-prompt">Nombre Completo</p>
+                        <input class="user-info-field" readonly=true value="{{ user.extended_user.get_full_name }}">
+                    </div>
+                    <div class="user-info-field-container">
+                        <p class="user-info-prompt">Correo electrónico</p>
+                        <input class="user-info-field" readonly=true value="{{ user.email }}">
+                    </div>
+                    <div class="user-info-field-container">
+                        <p class="user-info-prompt">Fecha de Nacimiento</p>
+                        <input class="user-info-field" readonly=true value="{{ user.extended_user.birthdate }}">
+                    </div>
+                    <div class="user-info-field-container">
+                        <p class="user-info-prompt">Nivel Académico</p>
+                        <input class="user-info-field" readonly=true value="{{ user.extended_user.academic_level }}">
+                    </div>
+                    <div class="user-info-field-container" style="text-align: center; margin-top: 2rem; margin-bottom: 0.6rem;">
+                        {% if user.extended_user.cv %}
+
+                        <a class="user-info-cv" href="{% url 'users:user_cv' id=user.pk %}">Ver CV&nbsp;<span class="material-icons">file_download</span></a>
+                        <a class="user-info-cv" href="{% url 'users:user_cv_download' id=user.pk %}">Descargar CV&nbsp;<span class="material-icons">file_download</span></a>
+                        {% else %}
+                        <a class="user-info-cv" href="{% url 'users:user_profile_updateCV' %}">Agregar CV&nbsp;<span class="material-icons">file_download</span></a>
+
+                        {% endif %}
+                      
+                        <!-- <input type="file" class="user-info-field" readonly=true value="Preparatoria"> -->
+                    </div>
+                    <br>
+                </div>
+                
+                {% if own_courses %}
+                    <div class="user-current-courses-container">
+                        <p class="user-info-title">Capacitaciones Impartidas</p>
+                        <hr class="hr-nice">
+                
+                    {% include 'users/_user_own_courses_snippet.html' with courses=own_courses %}
+                
+                        <br>
+                    </div>
+                {% endif %}
+
+                <div class="user-current-courses-container">
+                    <p class="user-info-title">Capacitaciones actuales</p>
+                    <hr class="hr-nice">
+            
+                   {% include 'users/_user_courses_snippet.html' with courses=incomplete_courses %}
+            
+                    <br>
+                </div>
+            
+                <div class="user-current-courses-container">
+                    <p class="user-info-title">Capacitaciones Completadas</p>
+                    <hr class="hr-nice">
+            
+                        {% include 'users/_user_courses_snippet.html' with courses=completed_courses %}
+            
+                    <br>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+{% endblock %}

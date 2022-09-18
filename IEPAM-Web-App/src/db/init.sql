@@ -1,0 +1,8 @@
+CREATE DATABASE IF NOT EXISTS iepam;
+
+USE iepam;
+
+CREATE USER iepam_app IDENTIFIED BY '1234';
+GRANT ALL
+ON iepam.*
+TO iepam_app

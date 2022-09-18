@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+				<html>
+					<head>
+						<title> Act. 5.3 </title>
+						<style>
+							h1, h3 {
+								font-weight: bold;
+								font-family: Verdana, Arial, sans-serif;
+							}
+							
+							p {
+								font-family: Verdana, Arial, sans-serif;
+							}
+						</style>
+					</head>
+					<body>
+						<h1> Resaltador de sintaxis paralelo </h1>
+						<br>
+						<h3> Carlos Alberto Ramírez Viche - A00832076 </h3>
+						<br><p><font color = '979797'># Import pickle module</font></p><p><strong><font color = 'C10F09'>import</font></strong>&nbsp;&nbsp;<font color = '000000'>pickle</font></p><p><font color = '000000'></font></p><p><font color = '979797'># Declare the object to store data</font></p><p><font color = '000000'>dataObject</font>&nbsp;&nbsp;<font color = 'FF6C00'>=</font>&nbsp;&nbsp;<font color = '000000'>[</font><font color = '000000'>]</font><font color = '000000'></font></p><p><font color = '979797'># Iterate the for loop for 5 times</font></p><p><strong><font color = 'C10F09'>for</font></strong>&nbsp;&nbsp;<font color = '000000'>num</font>&nbsp;&nbsp;<strong><font color = 'C10F09'>in</font></strong>&nbsp;&nbsp;<font color = '000000'>range</font><font color = '000000'>(</font><font color = '0098FB'>10</font></font><font color = '000000'>,</font></font><font color = '0098FB'>15</font></font><font color = '000000'>)</font></font><font color = '000000'>:</font></font><font color = '000000'></font></p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color = '000000'>dataObject.append</font><font color = '000000'>(</font><font color = '000000'>num</font><font color = '000000'>)</font><font color = '000000'></font></p><p><font color = '000000'></font></p><p><font color = '979797'># Open a file for writing data</font></p><p><font color = '000000'>file_handler</font>&nbsp;&nbsp;<font color = 'FF6C00'>=</font>&nbsp;&nbsp;<font color = '000000'>open</font><font color = '000000'>(</font><font color = '4CC109'>'languages'</font><font color = '000000'>,</font>&nbsp;&nbsp;<font color = '4CC109'>'wb'</font><font color = '000000'>)</font><font color = '000000'></font></p><p><font color = '979797'># Dump the data of the object into the file</font></p><p><font color = '000000'>pickle.dump</font><font color = '000000'>(</font><font color = '000000'>dataObject</font><font color = '000000'>,</font>&nbsp;&nbsp;<font color = '000000'>file_handler</font><font color = '000000'>)</font><font color = '000000'></font></p><p><font color = '979797'># close the file handler</font></p><p><font color = '000000'>file_handler.close</font><font color = '000000'>(</font><font color = '000000'>)</font><font color = '000000'></font></p><p><font color = '000000'></font></p><p><font color = '979797'># Open a file for reading the file</font></p><p><font color = '000000'>file_handler</font>&nbsp;&nbsp;<font color = 'FF6C00'>=</font>&nbsp;&nbsp;<font color = '000000'>open</font><font color = '000000'>(</font><font color = '4CC109'>'languages'</font><font color = '000000'>,</font>&nbsp;&nbsp;<font color = '4CC109'>'rb'</font><font color = '000000'>)</font><font color = '000000'></font></p><p><font color = '979797'># Load the data from the file after deserialization</font></p><p><font color = '000000'>dataObject</font>&nbsp;&nbsp;<font color = 'FF6C00'>=</font>&nbsp;&nbsp;<font color = '000000'>pickle.load</font><font color = '000000'>(</font><font color = '000000'>file_handler</font><font color = '000000'>)</font><font color = '000000'></font></p><p><font color = '979797'># Iterate the loop to print the data</font></p><p><strong><font color = 'C10F09'>for</font></strong>&nbsp;&nbsp;<font color = '000000'>val</font>&nbsp;&nbsp;<strong><font color = 'C10F09'>in</font></strong>&nbsp;&nbsp;<font color = '000000'>dataObject</font><font color = '000000'>:</font><font color = '000000'></font></p><p>&nbsp;&nbsp;&nbsp;&nbsp;<font color = '000000'>print</font><font color = '000000'>(</font><font color = '4CC109'>'The data value : '</font><font color = '000000'>,</font>&nbsp;&nbsp;<font color = '000000'>val</font><font color = '000000'>)</font><font color = '000000'></font></p><p><font color = '979797'># close the file handler</font></p><p><font color = '000000'>file_handler.close</font><font color = '000000'>(</font><font color = '000000'>)</font></p></body>
+				  </html>

@@ -1,0 +1,10 @@
+[
+    {
+    "test_range_id": 0,
+    "lower_value": 0,
+    "upper_value": 10,
+    "test_id":0,
+    "indicator": "indicador",
+    "color": "grey",
+    }
+]

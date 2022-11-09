@@ -1,0 +1,17 @@
+.pruebas-page-title {
+    padding-top: 3rem;
+}
+
+.pruebas-page-subtitle {
+    font-size: 1.5rem;
+}
+
+.pruebas-dimensiones-container {
+    margin: 5rem auto;
+}
+
+.pruebas-dimensiones-titles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

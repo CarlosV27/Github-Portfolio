@@ -1,0 +1,60 @@
+.doctor-section h1 {
+    padding-top: 2rem;
+}
+
+.doctor-section div {    
+    margin: 2rem 0;
+}
+
+.registro-paciente-btn {
+    font-size: 12px;
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 5px 5px;
+}
+
+.registro-paciente-btn:hover {
+    background-color: transparent;
+    color: black;
+}
+
+.registro-btn-container {
+    text-align: center;
+}
+
+.tabla-pacientes-container h2 {
+    background-color: #D87A63;
+    color: #FFFFFF;
+    padding: 0.5rem; 
+    display: inline-block;
+    margin: 2rem 0;
+}
+
+.tabla-pacientes {
+    border-collapse: collapse;
+    width: 100%;    
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+thead{
+    background-color: #6A98D1;
+    color: white;
+    font-size: 15px;        
+}
+
+tbody {
+    background-color: #D6EFEF;    
+    font-size: 12px;    
+}
+
+th {
+    padding: 0.5rem;
+}
+
+td {
+    padding: 0.5rem;    
+}
+

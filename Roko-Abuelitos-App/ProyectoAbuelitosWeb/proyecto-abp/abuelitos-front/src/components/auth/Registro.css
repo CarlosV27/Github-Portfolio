@@ -1,0 +1,210 @@
+#registro-section {
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;        
+}
+
+.registro-content {
+    width: 50%;   
+    height: 100%;   
+    overflow: scroll;  
+}
+
+.registro-content .link {
+    color: #221E1F;
+    padding-bottom: 1rem;
+}
+
+#registro-active {
+    color: #6A98D1;
+}
+
+.registro-content .link:hover {
+    color: #6A98D1;
+    border-bottom: 2px solid #6A98D1;
+}
+
+.registro-decoration {
+    background-color: #6A98D1;
+    width: 50%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.registro-navbar {
+    width: 100%;    
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    height: 10vh;    
+    padding: 2rem;    
+}
+
+.registro-nav-menu ul {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.registro-nav-menu li {
+    margin-left: 1rem;
+}
+
+.form-section {   
+    height: 125vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;    
+}
+
+.form-section h2 {
+    margin-bottom: 1rem;
+}
+
+.form-section form {
+    margin-top: 2rem;
+}
+
+.form-section label,
+.form-section input {
+    display: block;
+}
+
+.form-section div {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.form-section label {
+    margin-bottom: 0.2rem;
+}
+
+.form-section input[type=text],
+.form-section input[type=email],
+.form-section input[type=password] {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 6px;    
+}
+
+.registro-btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+#registro-btn {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid #6A98D1;
+    border-radius: 6px;    
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: #6A98D1;
+    cursor: pointer;
+    color: #FFFFEF;
+}
+
+#registro-btn:hover {
+    background-color: transparent;
+    color: #221E1F;
+}
+
+.registro-decoration .circle {
+    height: 200px;
+    width: 250px;
+    background-color: #D6EFEF;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.registro-decoration .circle-top {
+    top: -100px;
+    right: -7px;
+}
+
+.registro-decoration .circle-bottom {
+    bottom: -100px;
+    left: -10px;
+}
+
+.registro-decoration .line {
+    height: 5px;
+    width: 100%;
+    background-color: #D6EFEF;    
+    position: absolute;      
+}
+
+.registro-decoration .line-top {
+    top: 30px;
+    right: 0;
+}
+
+.registro-decoration .line-up {
+    height: 60%;
+    width: 5px;
+    background-color: #D6EFEF;    
+    position: absolute;      
+    bottom: 0;
+}
+
+.registro-decoration .line-center1 {
+    left: 60px;
+}
+
+.registro-decoration .line-center2 {
+    left: 150px;
+}
+
+.registro-decoration .square {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    background-color: #D6EFEF;
+    border-radius: 10%;
+    opacity: 0.8;
+}
+
+.registro-decoration .square-center {
+    right: 200px;
+    bottom: 270px;
+}
+
+.registro-decoration .inicio-sesion-img-container {
+    width: 40%;
+    max-width: 60%;
+    border-radius: 20px;
+    overflow: hidden;
+    position: absolute;
+    right: 250px;
+    bottom: 300px;
+}
+
+.registro-decoration img {    
+    object-fit: cover;
+}
+
+.radio-btns-container {
+    margin-top: 1rem;
+}
+
+#is_doctor {
+    display: inline; 
+    height: 15px;
+    width: 15px;
+    vertical-align: middle;   
+}
+
+#is_pacient {
+    display: inline;    
+    height: 15px;
+    width: 15px;
+    vertical-align: middle;
+}
+
+#radio-label {
+    font: inherit;
+    display: inline;
+    margin: 0 0 0 0.5rem;
+    padding: 0;
+}

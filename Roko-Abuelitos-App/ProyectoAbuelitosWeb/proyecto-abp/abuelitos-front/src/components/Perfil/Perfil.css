@@ -1,0 +1,21 @@
+.perfil-info-container {
+    display: flex;
+    align-items: center; 
+    padding: 1rem 0;
+}
+
+.perfil-image-container {
+    margin-right: 2rem;
+}
+
+.perfil-lista-info li {
+    font-weight: bold;
+}
+
+.perfil-lista-info span {
+    font-weight: normal;
+}
+
+.perfil-ficha-media-container {
+    margin: 4rem 0;
+}

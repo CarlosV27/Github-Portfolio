@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+section {
+  width: 80%;
+  margin: 6rem auto 0 auto;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+input,
+label {
+  font: inherit;
+}
+
+.cards-container {
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+#logo {
+  color: #ffffff;
+  border-radius: 50%;
+  width: 60px;
+}

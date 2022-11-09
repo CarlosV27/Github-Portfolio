@@ -1,0 +1,19 @@
+.home-greetings-container {
+    padding: 3rem 0;
+}
+
+.home-title {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.section-title {
+    background-color: #D87A63;
+    color: #FFFFEF;
+    display: inline-block;
+    padding: 0.5rem; 
+}
+
+.cards-container {
+    display: flex;
+}

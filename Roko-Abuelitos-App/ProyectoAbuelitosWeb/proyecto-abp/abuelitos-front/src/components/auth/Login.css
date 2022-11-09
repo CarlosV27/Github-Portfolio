@@ -1,0 +1,184 @@
+#inicio-sesion-section {
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;    
+}
+
+.inicio-sesion-content {
+    width: 50%;   
+    height: 100%; 
+    padding: 2rem;
+}
+
+.inicio-sesion-content .link {
+    color: #221E1F;
+    padding-bottom: 1rem;
+}
+
+#iniciar-sesion-active {
+    color: #D6EFEF;
+}
+
+.inicio-sesion-content .link:hover {
+    color: #D6EFEF;
+    border-bottom: 2px solid #D6EFEF;
+}
+
+.inicio-sesion-decoration {
+    background-color: #D6EFEF;
+    width: 50%;
+    height: 100%;
+    position: relative;
+}
+
+.inicio-sesion-navbar {
+    width: 50%;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    height: 5rem;
+    position: fixed;
+    top: 0;
+    left: 0;    
+}
+
+.inicio-sesion-nav-menu ul {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.inicio-sesion-nav-menu li {
+    margin-left: 1rem;
+}
+
+.form-section-login {   
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-section-login h2 {
+    margin-bottom: 1rem;
+}
+
+.form-section-login form {
+    margin-top: 2rem;
+}
+
+.form-section-login label,
+.form-section-login input {
+    display: block;
+}
+
+.form-section-login div {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.form-section-login label {
+    margin-bottom: 0.2rem;
+}
+
+.form-section-login input[type=email],
+.form-section-login input[type=password] {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 6px;    
+}
+
+.form-section-login span {
+    color: #D87A63;
+}
+
+.inicio-sesion-btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inicio-sesion-btn {    
+    text-align: center;
+    width: 15.625rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #D6EFEF;
+    border-radius: 6px;
+    background: transparent;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+    color: #221E1F;
+    cursor: pointer;
+}
+
+#inicia-sesion-btn {
+    font: inherit;
+    background-color: #D6EFEF;
+}
+
+#no-cuenta-btn:hover {
+    background-color: #D6EFEF;
+}
+
+#inicia-sesion-btn:hover {
+    background: transparent;
+}
+
+.inicio-sesion-decoration .circle {
+    height: 200px;
+    width: 250px;
+    background-color: #D87A63;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.inicio-sesion-decoration .circle-top {
+    top: -100px;
+    left: 0;
+}
+
+.inicio-sesion-decoration .line {
+    height: 5px;
+    width: 100%;
+    background-color: #D87A63;    
+    position: absolute;      
+}
+
+.inicio-sesion-decoration .line-top {
+    top: 5px;
+    right: 0;
+}
+
+.inicio-sesion-decoration .circle-center {
+    height: 400px;
+    width: 400px;
+    right: 40px;    
+    bottom: 250px;
+}
+
+.inicio-sesion-decoration .square {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    background-color: #D87A63;
+    border-radius: 30%;
+    opacity: 0.8;
+}
+
+.inicio-sesion-decoration .square-center {
+    right: 300px;
+    bottom: 100px;
+}
+
+.inicio-sesion-decoration .inicio-sesion-img-container {
+    width: 40%;
+    max-width: 60%;
+    border-radius: 20px;
+    overflow: hidden;
+    position: absolute;
+    right: 250px;
+    bottom: 300px;
+}
+
+.inicio-sesion-decoration img {    
+    object-fit: cover;
+}

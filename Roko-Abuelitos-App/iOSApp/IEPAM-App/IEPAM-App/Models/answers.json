@@ -1,0 +1,39 @@
+[
+    {
+        "answer_id": 0,
+        "answer": "Manzana",
+        "weight": 1,
+        "question_id": 0
+    },
+    {
+        "answer_id": 1,
+        "answer": "Caballo",
+        "weight": 1,
+        "question_id": 0
+    },
+    {
+        "answer_id": 2,
+        "answer": "Centavo",
+        "weight": 1,
+        "question_id": 0
+    },
+    {
+        "answer_id": 3,
+        "answer": "2020",
+        "weight": 1,
+        "question_id": 1
+    },
+    {
+        "answer_id": 4,
+        "answer": "2021",
+        "weight": 1,
+        "question_id": 1
+    },
+    {
+        "answer_id": 5,
+        "answer": "2022",
+        "weight": 1,
+        "question_id": 1
+    }
+    
+]

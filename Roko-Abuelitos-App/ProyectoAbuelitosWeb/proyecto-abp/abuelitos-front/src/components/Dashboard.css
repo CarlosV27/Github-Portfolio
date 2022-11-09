@@ -1,0 +1,57 @@
+.admin-header {
+    background-color: #D6EFEF;
+    height: 15vh;
+}
+
+.admin-header .circle-admin {
+    height: 200px;
+    width: 200px;
+    background-color: #D87A63;
+    border-radius: 50%;
+    position: absolute; 
+}
+
+.admin-header #circle-left-admin {
+    top: -120px;
+    left: -100px;
+}
+
+.admin-header #circle-right-admin {
+    top: -100px;
+    right: -10px;
+}
+
+.admin-title-section {
+    width: 85%;    
+    padding-bottom: 0.1rem;
+    border-bottom: 10px solid #D87A63;
+    position: absolute;
+    left: 13%;
+}
+
+.admin-title-section h2 {
+    padding-left: 9rem;
+    margin: 0;
+}
+
+.admin-section {    
+    padding: 3rem 0 0 15rem;
+    height: 100vh;
+    width: 100%;
+    text-align: center;    
+}
+
+.dasboard-section div {    
+    margin: 0 auto;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.dashboard img {
+    cursor: pointer;
+}

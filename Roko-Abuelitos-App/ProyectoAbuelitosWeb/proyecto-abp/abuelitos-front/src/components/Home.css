@@ -1,0 +1,68 @@
+.main-content-container {    
+    margin: 1rem auto;
+    text-align: center;
+    padding: 1rem;
+    border-bottom: 1px solid #C3E2FA;
+}
+
+.cards-homepage-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-img-container {
+    width: 100%;    
+    max-width: 1000px;
+    height: 500px;
+    background-image: url(../images/infoBackgroundImg.png);
+    background-size: cover;
+    border-radius: 10px;    
+    margin: 0 auto;    
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.info-content {
+    width: inherit;
+    max-width: 1000px;
+    height: inherit;
+    text-align: center;      
+    position: relative;    
+}
+
+.circle-btn {    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 170px;
+    width: 170px;    
+    background-color: #000000;
+    color: #FFFFFF;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.info-content-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100px;
+}
+
+#info-dona-btn {
+    top: 12.5rem;
+    left: 11rem;
+    right: 11rem;
+}
+
+#info-equipo-btn {
+    top: 15.625rem;
+    left: 26rem;
+    right: 26rem;
+}
+
+#info-investigacion-btn {
+    top: 11.25rem;
+    left: 42rem;
+    right: 42rem;
+}

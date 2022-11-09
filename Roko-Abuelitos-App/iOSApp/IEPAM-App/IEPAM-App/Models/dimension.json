@@ -1,0 +1,22 @@
+[
+    {
+        "dimension_id": 0,
+        "dimension": "Cognitiva"
+    },
+    {
+        "dimension_id": 1,
+        "dimension": "Funcionalidad"
+    },
+    {
+        "dimension_id": 2,
+        "dimension": "Afectivo"
+    },
+    {
+        "dimension_id": 3,
+        "dimension": "Desempeño Físico"
+    },
+    {
+        "dimension_id": 4,
+        "dimension": "Riesgo Social"
+    }
+]
